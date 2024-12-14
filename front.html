@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Stock Market Tool</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 1em;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            display: inline-block;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #1abc9c;
+            transform: scale(1.1);
+        }
+
+        .tab-content {
+            padding: 2em;
+            display: none;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 1em;
+            text-transform: uppercase;
+            animation: popIn 1.2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #4b4b4b;
+            margin: 0 auto;
+            max-width: 800px;
+            animation: fadeIn 1s ease-in-out;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            text-align: center;
+            padding: 0.5em 0;
+            font-size: 0.8em;
+            animation: fadeIn 2s ease-in-out;
+            margin-top: 212px;
+        }
+
+        .feature-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2em;
+            gap: 1em;
+        }
+
+        .feature-nav a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 0.5em 1em;
+            border: 2px solid #1abc9c;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .feature-nav a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#" class="tab-link" data-tab="home" style="color: white;">Home</a>
+            <h1 style="text-align: center;">AI Stock Market Tool</h1>
+        </div>
+    </header>
+
+    <!-- Home Tab Content -->
+    <div id="home" class="tab-content active">
+        <h2>Welcome to AI Stock Market Analyzer</h2>
+        <p>Your one-stop solution for smart stock trading decisions.</p>
+
+        <div class="feature-nav">
+            <a href="#feature-buy-sell" class="tab-link" data-tab="buy-sell">Buy/Sell Signals</a>
+            <a href="#feature-trend" class="tab-link" data-tab="trend">Stock Trend Prediction</a>
+            <a href="#feature-sentiment" class="tab-link" data-tab="sentiment">Sentiment Analysis</a>
+            <a href="#feature-dashboard" class="tab-link" data-tab="dashboard">Interactive Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Buy/Sell Signals Tab Content -->
+    <div id="buy-sell" class="tab-content">
+        <h2>Features: Buy/Sell Signals</h2>
+        <p>Get accurate Buy/Sell signals with RSI, MACD, and Bollinger Bands. These indicators help determine market trends and potential entry and exit points for a stock. By analyzing historical data, this feature will provide you with trading insights to maximize your profits.</p>
+    </div>
+
+    <!-- Stock Trend Prediction Tab Content -->
+    <div id="trend" class="tab-content">
+        <h2>Features: Stock Trend Prediction</h2>
+        <p>Leverage machine learning models to predict stock price movements. This feature uses historical data and statistical models to forecast future trends, helping you make data-driven investment decisions and identify long-term trends.</p>
+    </div>
+
+    <!-- Sentiment Analysis Tab Content -->
+    <div id="sentiment" class="tab-content">
+        <h2>Features: Sentiment Analysis</h2>
+        <p>Analyze news and social media to gauge public opinion on stocks. By evaluating sentiments from social platforms, blogs, and news sources, this feature provides insights on how market sentiment influences stock prices, enabling more informed trading decisions.</p>
+    </div>
+
+    <!-- Interactive Dashboard Tab Content -->
+    <div id="dashboard" class="tab-content">
+        <h2>Features: Interactive Dashboard</h2>
+        <p>Experience a user-friendly dashboard with actionable insights. The interactive dashboard will provide visualizations of your stock portfolio, real-time data updates, and quick access to critical metrics that are key to making timely investment decisions.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 AI Stock Market Tool</p>
+    </footer>
+
+    <script>
+        const links = document.querySelectorAll('.tab-link');
+        const contents = document.querySelectorAll('.tab-content');
+
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const tab = event.target.getAttribute('data-tab');
+
+                contents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                document.getElementById(tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
